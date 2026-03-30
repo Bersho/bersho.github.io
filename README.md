@@ -1,1 +1,372 @@
 # bersho.github.io
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LifePad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #F0EEE9;
+      --bg-section: #E9E7E2;
+      --text: #111111;
+      --text-muted: #999999;
+      --accent: #5BC8CC;
+      --border: rgba(0, 0, 0, 0.1);
+      --btn-bg: #111111;
+      --btn-text: #F0EEE9;
+      --input-bg: #E9E7E2;
+      --input-border: rgba(0, 0, 0, 0.15);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1A1A1A;
+        --bg-section: #222222;
+        --text: #F0EEE9;
+        --text-muted: #666666;
+        --accent: #5BC8CC;
+        --border: rgba(255, 255, 255, 0.1);
+        --btn-bg: #F0EEE9;
+        --btn-text: #1A1A1A;
+        --input-bg: #242424;
+        --input-border: rgba(255, 255, 255, 0.12);
+      }
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 400;
+      line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    /* ── Header ── */
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 28px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 13px;
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ── Main ── */
+    main {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding: 80px 0 60px;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: clamp(48px, 12vw, 72px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-desc {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      line-height: 1.8;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+
+    /* ── Download section ── */
+    .download {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    .store-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .store-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      transition: opacity 0.15s;
+    }
+
+    .store-btn:hover {
+      opacity: 0.75;
+    }
+
+    .store-btn-name {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-bottom: 2px;
+    }
+
+    .store-btn-label {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .store-btn-arrow {
+      font-size: 18px;
+      color: var(--accent);
+    }
+
+    /* ── Android coming soon ── */
+    .android-soon {
+      padding: 28px 0 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .android-soon-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .android-soon-header .section-label {
+      margin-bottom: 0;
+    }
+
+    .coming-soon-tag {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: transparent;
+      border: 1px solid var(--accent);
+      border-radius: 2px;
+      padding: 2px 7px;
+    }
+
+    .android-desc {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    /* ── Beta signup form ── */
+    .beta-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .beta-form input {
+      width: 100%;
+      padding: 14px 16px;
+      background: var(--input-bg);
+      border: 1px solid var(--input-border);
+      border-radius: 4px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.15s;
+      -webkit-appearance: none;
+    }
+
+    .beta-form input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .beta-form input:focus {
+      border-color: var(--accent);
+    }
+
+    .beta-form button {
+      width: 100%;
+      padding: 14px 20px;
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      border: none;
+      border-radius: 4px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .beta-form button:hover {
+      opacity: 0.75;
+    }
+
+    /* ── Screenshots ── */
+    .screenshots {
+      padding: 40px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .screenshot-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .screenshot-slot {
+      aspect-ratio: 9 / 19.5;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--input-bg);
+      border: 1px solid var(--border);
+    }
+
+    .screenshot-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* placeholder shown when no img src is set */
+    .screenshot-slot.empty {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .screenshot-slot.empty::after {
+      content: '';
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      margin-top: 48px;
+      padding: 24px 32px;
+      text-align: center;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <span class="logo">LifePad</span>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <h1 class="hero-title">Life<span>.</span></h1>
+      <p class="hero-desc">Track life totals, rounds, and notes for your trading card games. Clean, fast, and distraction-free.</p>
+    </section>
+
+    <section class="download">
+      <p class="section-label">Download</p>
+      <div class="store-buttons">
+
+        <a href="YOUR_APP_STORE_URL" class="store-btn">
+          <div>
+            <div class="store-btn-name">iPhone &amp; iPad</div>
+            <div class="store-btn-label">App Store</div>
+          </div>
+          <span class="store-btn-arrow">↗</span>
+        </a>
+
+      </div>
+    </section>
+
+    <section class="screenshots">
+      <p class="section-label">Screenshots</p>
+      <div class="screenshot-grid">
+        <!-- Replace src values with your image paths, e.g. screenshots/light.png -->
+        <div class="screenshot-slot empty"><img src="" alt="LifePad screenshot" onerror="this.style.display='none'" /></div>
+        <div class="screenshot-slot empty"><img src="" alt="LifePad screenshot" onerror="this.style.display='none'" /></div>
+        <div class="screenshot-slot empty"><img src="" alt="LifePad screenshot" onerror="this.style.display='none'" /></div>
+      </div>
+    </section>
+
+    <section class="android-soon">
+      <div class="android-soon-header">
+        <p class="section-label">Android</p>
+        <span class="coming-soon-tag">Coming Soon</span>
+      </div>
+      <p class="android-desc">Sign up to be notified when Android beta testing opens.</p>
+
+      <form class="beta-form" action="mailto:lifepadsupport@icloud.com" method="GET" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your name" autocomplete="name" />
+        <input type="email" name="email" placeholder="Email address" autocomplete="email" required />
+        <input type="hidden" name="subject" value="Android Beta Signup" />
+        <button type="submit">Notify Me</button>
+      </form>
+    </section>
+
+  </main>
+
+  <footer>
+    &copy; 2026 LifePad
+  </footer>
+
+</body>
+</html>
